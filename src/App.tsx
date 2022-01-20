@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+
+import { DropdownMultipleCombobox } from "./components/DropdownMultipleCombobox";
+import "./App.css";
 
 function App() {
+  const [selected, setSelected] = useState<any[]>([]);
+
+  useEffect(() => {
+    console.log({ selected });
+  }, [selected]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{ width: "500px", margin: "50px auto" }}>
+        <DropdownMultipleCombobox
+          items={["Apple", "Banana", "Orange"]}
+          initialSelectedItems={["Apple"]}
+          onChange={(selectedItems) => setSelected(selectedItems)}
+        />
+      </div>
     </div>
   );
 }
